@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "paths": {
+      "@velvet/shared": ["./shared/src/index.ts"],
+      "@/*": ["./client/src/*"]
+    }
+  },
+  "include": ["scripts/**/*.ts", "scripts/**/*.tsx", "client/src/**/*.ts", "client/src/**/*.tsx", "shared/src/**/*.ts", "server/src/**/*.ts"]
+}

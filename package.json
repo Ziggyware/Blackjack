@@ -1,0 +1,35 @@
+{
+  "name": "velvet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VELVET — an avant-garde multiplayer blackjack table",
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n \"table,client\" -c \"magenta,cyan\" \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev --workspace server",
+    "dev:client": "npm run dev --workspace client",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server",
+    "test": "npm run test --workspace shared",
+    "test:render": "tsx scripts/render-smoke.tsx",
+    "test:protocol": "node scripts/smoke.mjs",
+    "test:browser": "tsx scripts/browser-smoke.tsx",
+    "verify": "./scripts/verify.sh",
+    "typecheck": "npm run typecheck --workspace shared && npm run typecheck --workspace server && npm run typecheck --workspace client"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^30.0.0",
+    "concurrently": "^9.1.2",
+    "jsdom": "^30.1.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
